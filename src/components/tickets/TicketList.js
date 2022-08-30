@@ -8,6 +8,7 @@ export const TicketList = () => {
     
     //!this is grabbing the honey_user from the logIn page
     //!then is making that localhoneyuser into a JSON file, and assinging it to a variable?
+    //!explain how come these 2 have the .staff key in the objects?? WHAT IS THIS DOING?! SOS HELP!
     const localHoneyUser = localStorage.getItem("honey_user")
     const honeyUserObject = JSON.parse(localHoneyUser)
 
@@ -50,13 +51,12 @@ export const TicketList = () => {
     )
 
     return <>
-    <button
-        onClick={
-            () => {
-                setEmergency(true)
-            }
-        }
-    >Emergency Only</button>
+    {
+        //?this is using ternary statements to render a different view depending on the honeyUserObject
+        honeyUserObject.staff
+        ? <button onClick={ () => {setEmergency(true)} }>Emergency Only</button>
+        : ""
+    }
     <h2>List of Tickets</h2>
         <article className="tickets">
         {
