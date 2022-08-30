@@ -4,11 +4,23 @@ import "./ticketList.css"
 export const TicketList = () => {
     const [tickets, setTickets] = useState([])
     const [filteredTickets, setFiltered] = useState([])
-
+    const [emergency, setEmergency] = useState(false)
+    
     //!this is grabbing the honey_user from the logIn page
     //!then is making that localhoneyuser into a JSON file, and assinging it to a variable?
     const localHoneyUser = localStorage.getItem("honey_user")
     const honeyUserObject = JSON.parse(localHoneyUser)
+
+    useEffect(
+        () => {
+            if(emergency) {
+                //?this line will produce a new array, so we need to assing it to a variable
+                const emergencyTickets = tickets.filter(ticket => ticket.emergency === true)
+                setFiltered(emergencyTickets)
+            }
+        },
+        [emergency]
+    )
 
     useEffect(
         () => {
@@ -38,6 +50,13 @@ export const TicketList = () => {
     )
 
     return <>
+    <button
+        onClick={
+            () => {
+                setEmergency(true)
+            }
+        }
+    >Emergency Only</button>
     <h2>List of Tickets</h2>
         <article className="tickets">
         {
