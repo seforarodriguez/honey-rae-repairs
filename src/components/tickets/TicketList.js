@@ -38,6 +38,7 @@ export const TicketList = () => {
     )
 
     return <>
+    <button>Emergency Only</button>
     <h2>List of Tickets</h2>
         <article className="tickets">
         {
