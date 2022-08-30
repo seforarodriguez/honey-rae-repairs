@@ -5,8 +5,8 @@ flex-direction: column;
 
 .ticket {
     background-color: lightblue;
-    padding: 3em;
-    margin: 1.5em;
-    border: 1.5px dotted rgba(29, 184, 208, 0.747);
-    border-radius: 3em;
+    padding: 2em;
+    margin: .5em;
+    border: .5px dotted rgba(29, 184, 208, 0.747);
+    border-radius: 1.3em;
 }
