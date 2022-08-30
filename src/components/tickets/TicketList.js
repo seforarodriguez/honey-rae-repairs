@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import "./ticketList.css"
 
 export const TicketList = () => {
     const [tickets, setTickets] = useState([])
     const [filteredTickets, setFiltered] = useState([])
     const [emergency, setEmergency] = useState(false)
+    const navigate = useNavigate()
     
     //!this is grabbing the honey_user from the logIn page
     //!then is making that localhoneyuser into a JSON file, and assinging it to a variable?
@@ -59,14 +61,18 @@ export const TicketList = () => {
         //?this is using ternary statements to render a different view depending on the honeyUserObject
         honeyUserObject.staff
         ? 
+        //?for this button to work I have to make sure I told the useEffect, that when its false it should do something else
+        //?if not it wont do anything.
         <>
         <button onClick={ () => {setEmergency(true)} }>Emergency Only</button>
-        //?for this button to work I have to make sure I told the useEffect, that when its false it should do something else
-        //?if not it wont do anything.t
         <button onClick={ () => {setEmergency(false)} }>Show All Tickets</button>
         </>
+        //?if its not a staff I want them to be able to create a ticket so, this is the "else statement"
         
-        : ""
+        :<>
+        <button onClick={() => navigate("/ticket/create")}>Create Ticket</button>
+        <button onClick={() => navigate("/ticket/create")}>Create Ticket</button>
+        </> 
     }
     <h2>List of Tickets</h2>
         <article className="tickets">
