@@ -62,7 +62,7 @@ export const TicketList = () => {
         <>
         <button onClick={ () => {setEmergency(true)} }>Emergency Only</button>
         //?for this button to work I have to make sure I told the useEffect, that when its false it should do something else
-        //?if not it wont do anything.
+        //?if not it wont do anything.t
         <button onClick={ () => {setEmergency(false)} }>Show All Tickets</button>
         </>
         
