@@ -14,6 +14,7 @@ export const ApplicationViews = () => {
             }>
 
                 <Route path="tickets" element={ <TicketList /> } />
+				<Route path="ticket/create" element={ <TicketForm /> } />
             </Route>
         </Routes>
     )
