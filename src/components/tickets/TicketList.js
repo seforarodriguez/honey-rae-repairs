@@ -19,6 +19,10 @@ export const TicketList = () => {
                 const emergencyTickets = tickets.filter(ticket => ticket.emergency === true)
                 setFiltered(emergencyTickets)
             }
+            else {
+                //?I need to set this act another way if the emergency statement changes, otherwise it wont do nothing
+                setFiltered(tickets)
+            }
         },
         [emergency]
     )
@@ -54,7 +58,14 @@ export const TicketList = () => {
     {
         //?this is using ternary statements to render a different view depending on the honeyUserObject
         honeyUserObject.staff
-        ? <button onClick={ () => {setEmergency(true)} }>Emergency Only</button>
+        ? 
+        <>
+        <button onClick={ () => {setEmergency(true)} }>Emergency Only</button>
+        //?for this button to work I have to make sure I told the useEffect, that when its false it should do something else
+        //?if not it wont do anything.
+        <button onClick={ () => {setEmergency(false)} }>Show All Tickets</button>
+        </>
+        
         : ""
     }
     <h2>List of Tickets</h2>
