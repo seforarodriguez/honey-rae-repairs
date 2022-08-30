@@ -6,6 +6,7 @@ export const TicketList = () => {
     const [tickets, setTickets] = useState([])
     const [filteredTickets, setFiltered] = useState([])
     const [emergency, setEmergency] = useState(false)
+    const [openOnly, updateOpenOnly] = useState(false)
     const navigate = useNavigate()
     
     //!this is grabbing the honey_user from the logIn page
@@ -56,6 +57,21 @@ export const TicketList = () => {
         [tickets]
     )
 
+    useEffect(
+        () => {
+            if (openOnly) {
+            //if openOnly is true we are going to filter the tickets
+            const openTicketsArray = tickets.filter(ticket => {
+                return ticket.userId === honeyUserObject.id && ticket.dateCompleted === ""
+            })
+            setFiltered(openTicketsArray)
+        } else {
+                setFiltered(filteredTickets)
+            }
+        },
+        [openOnly]
+    )
+
     return <>
     {
         //?this is using ternary statements to render a different view depending on the honeyUserObject
@@ -71,7 +87,8 @@ export const TicketList = () => {
         
         :<>
         <button onClick={() => navigate("/ticket/create")}>Create Ticket</button>
-        <button onClick={() => navigate("/ticket/create")}>Create Ticket</button>
+        <button onClick={() => updateOpenOnly(true)}>Show Open Tickets</button>
+        <button onClick={() => updateOpenOnly(false)}>Show All My Tickets</button>
         </> 
     }
     <h2>List of Tickets</h2>
