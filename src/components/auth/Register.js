@@ -37,7 +37,7 @@ export const Register = (props) => {
             .then(res => res.json())
             .then(response => {
                 if (response.length > 0) {
-                    // Duplicate email. No good.
+                    // !Duplicate email. No good????
                     window.alert("Account with that email address already exists")
                 }
                 else {

@@ -125,6 +125,13 @@
       "emergency": true,
       "dateCompleted": "",
       "id": 6
+    },
+    {
+      "userId": 1,
+      "description": "My iphone is deader than dead won't turn on",
+      "emergency": true,
+      "dateCompleted": "",
+      "id": 7
     }
   ],
   "employeeTickets": [

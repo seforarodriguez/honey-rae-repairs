@@ -66,7 +66,7 @@ export const TicketList = () => {
             })
             setFiltered(openTicketsArray)
         } else {
-                setFiltered(filteredTickets)
+            setFiltered(filteredTickets)
             }
         },
         [openOnly]
