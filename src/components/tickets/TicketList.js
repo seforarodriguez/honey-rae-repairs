@@ -21,8 +21,7 @@ export const TicketList = ({searchTermState}) => {
                 return ticket.description.toLowerCase().startsWith(searchTermState.toLowerCase())
             })
             setFiltered(searchedTickets)
-        },
-        [searchTermState]
+        },[searchTermState]
     )
 
 
