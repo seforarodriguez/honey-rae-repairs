@@ -1,25 +1,18 @@
-import { Outlet, Route, Routes } from "react-router-dom"
-import { TicketForm } from "../serviceTickets/TicketForm"
-import { TicketContainer } from "../tickets/TicketContainer"
-import { TicketList } from "../tickets/TicketList"
-import { TicketSearch } from "../tickets/TicketSearch"
+import { CustomerViews } from "./CustomerViews"
+import { EmployeeViews } from "./EmployeeViews"
+
 
 export const ApplicationViews = () => {
-	return (
-        <Routes>
-            <Route path="/" element={
-                <>
-                    <h1>Honey Rae Repair Shop</h1>
-                    <div>Your one-stop-shop to get all your electronics fixed</div>
+	const localHoneyUser = localStorage.getItem("honey_user")
+    const honeyUserObject = JSON.parse(localHoneyUser)
 
-                    <Outlet />
-                </>
-            }>
+    if (honeyUserObject.staff) {
+        return <EmployeeViews/>
+    } else {
+        return <CustomerViews/>
 
-                <Route path="tickets" element={ <TicketContainer/>} />
-				<Route path="ticket/create" element={ <TicketForm /> } />
-            </Route>
-        </Routes>
-    )
+    }
+         
+    
 }
 
